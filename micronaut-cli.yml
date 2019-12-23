@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: micronaut.stream.message.size
+---
+testFramework: spock
+sourceLanguage: groovy
