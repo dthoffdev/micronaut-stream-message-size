@@ -1,5 +1,6 @@
 package micronaut.stream.message.size
 
+import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.sse.Event
@@ -16,7 +17,7 @@ class StreamController {
       'AAAAAAAAAAAAAAAAAAA|AAAAAAAAAAAAAAAAAAA|AAAAAAAAAAAAAAAAAAA|AAAAAAAAAAAAAAAAAAA|AAAAAAAAAAAAAAAAAAA|AAAAAAAAAAAAAAAAAAA|AAAAAAAAAAAAAAAAAAA|AAAAAAAAAAAAAAAAAAA|AAAAAAAAAAAAAAAAAAA|'
   ]
 
-  @Get("/stream")
+  @Get(uri = "/stream", produces = MediaType.TEXT_EVENT_STREAM)
   Observable<Event<String>> infiniteStrings() {
     return Observable.fromIterable(strings.collect { Event.of(it) })
   }
